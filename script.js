@@ -52,7 +52,7 @@ function change_tool() {
 	if (brush)
 		tool_holder.innerHTML = "Brush";
 	else
-		tool_holder.innerHTML = "Erraser";
+		tool_holder.innerHTML = "Eraser";
 }
 
 function draw_line(x, y, x2, y2){
