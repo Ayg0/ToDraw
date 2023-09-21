@@ -26,6 +26,14 @@ canva.addEventListener('mousedown', (e) => {
 	drawing = true;
 });
 
+canva.addEventListener ("mouseout", (e) => {
+	if(drawing === true){
+		draw_line(x, y, e.offsetX, e.offsetY);
+		drawing = false;
+		y = x = 0;
+	}
+}, false);
+
 canva.addEventListener("mousemove" ,(e) =>{
 	if(drawing === true){
 	   draw_line(x, y, e.offsetX, e.offsetY);
