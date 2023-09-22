@@ -12,7 +12,7 @@
 			<label for="color" class="selectors">Brush Color:</label>
 			<input type="color" class="colorselector" id="colorpicker">
 			<label for="brush" id="rangeValue" class="selectors">5</label>
-			<input type="range" min="1" max="20" value="5" id="slid" class="rangecolor" oninput="rangeValue.innerText = this.value">
+			<input type="range" min="1" max="20" value="5" id="slid" class="rangecolor" oninput="update_size()">
 			<p id="holder">Brush</p>
 			<div class="center-btn"><button type="button" class="btn" onclick="change_tool()">change tool</button></div>
 			<div class="center-btn"><button type="button" class="btn" onclick="clearcanva()">Erase all</button></div>

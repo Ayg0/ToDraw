@@ -1,21 +1,15 @@
 const	canva = document.getElementById('canva');
-const	ctx = canva.getContext('2d');
+const	color = document.getElementById('colorpicker');
+const	line_width = document.getElementById('rangeValue');
+const	tool_holder = document.getElementById('holder');
+const	slider = document.getElementById('slid');
+
 let		drawing = false;
-let		color = document.getElementById('colorpicker');
-let		line_width = document.getElementById('rangeValue');
-let		tool_holder = document.getElementById('holder');
 let		x = 0;
 let		y = 0;
 let		brush = 1;
-
-function updatecanva(){
-	let	offsetX = canva.offsetLeft;
-	let	offsetY = canva.offsetTop;
-
-	canva.width = window.innerWidth - offsetX;
-	canva.height = window.innerHeight - offsetY;
-	document.getElementById('slid').value = 5;
-}
+const	ctx = canva.getContext('2d');
+let		tool_data = [["Erraser", "White", 5], ["Brush", "BLACK", 5]];
 
 document.addEventListener("DOMContentLoaded", updatecanva);
 window.addEventListener('resize', updatecanva);
@@ -55,12 +49,27 @@ function clearcanva(){
 	ctx.clearRect(0, 0, canva.width, canva.height);
 }
 
+function updatecanva(){
+	let	offsetX = canva.offsetLeft;
+	let	offsetY = canva.offsetTop;
+
+	canva.width = window.innerWidth - offsetX;
+	canva.height = window.innerHeight - offsetY;
+	slider.value = tool_data[brush][2];
+}
+
+function update_size(){
+	line_width.innerText = slider.value;
+	tool_data[brush][2] = line_width.innerHTML;
+}
+
 function change_tool() {
-	brush = !brush;
-	if (brush)
-		tool_holder.innerHTML = "Brush";
-	else
-		tool_holder.innerHTML = "Eraser";
+	brush = Number(!brush);
+
+	tool_holder.innerHTML = tool_data[brush][0];
+	tool_holder.style.color = tool_data[brush][1];
+	line_width.innerHTML = tool_data[brush][2];
+	slider.value = tool_data[brush][2];
 }
 
 function draw_line(x, y, x2, y2){
