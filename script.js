@@ -9,7 +9,7 @@ let		x = 0;
 let		y = 0;
 let		brush = 1;
 const	ctx = canva.getContext('2d');
-let		tool_data = [["Erraser", "White", 5], ["Brush", "BLACK", 5]];
+let		tool_data = [["🧽Eraser", "White", 5], ["✏️Brush", "BLACK", 5]];
 
 document.addEventListener("DOMContentLoaded", updatecanva);
 window.addEventListener('resize', updatecanva);
